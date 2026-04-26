@@ -1,21 +1,27 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+import { useAdminStore } from '@/stores/admin'
+const adminStore = useAdminStore()
 const iconUrl = new URL('@/assets/images/机器人.png', import.meta.url).href
 const router = useRouter()
 const selectMenu = (key) => {
   const currentRoute = router.options.routes[0]
   router.push(`${currentRoute.path}/${key.index}`)
 }
+const isCollapse = computed(() => adminStore.isCollapse)
 </script>
  <template>
- <el-aside width="264px">
+ <el-aside :width="isCollapse ? '64px' : '264px'">
         <el-menu
+        :collapse-transition="false"
         default-active="2"
         class="menu-style"
+        :collapse="isCollapse"
       >
      <div class="brand"> 
       <el-image :src="iconUrl" style="width: 50px; height: 50px;margin-right: 10px;" alt="logo" />
-      <div class="info-card">
+      <div class="info-card" v-show="!isCollapse">
         <h1 class="brand-title">心理健康AI助手</h1>
         <p class="brand-subtitle">管理后台</p>
       </div>

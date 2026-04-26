@@ -8,7 +8,7 @@ import NavBar from '@/components/NavBar.vue'
       <SideBar></SideBar>
       <el-container>
         <el-header><NavBar></NavBar></el-header>
-        <el-main><RouterView></RouterView></el-main>
+        <el-main class="main-content"><RouterView class="content-container"></RouterView></el-main>
       </el-container>
     </el-container>
   </div>
@@ -16,8 +16,16 @@ import NavBar from '@/components/NavBar.vue'
 <style lang="scss" scoped>
 .backend-layout {
   height: 100vh;
+  .el-header {
+    height: 74px !important;
+  }
   .main-container{
     height: 100%;
+    .content-container{
+      padding: 20px;
+      background-color: #fff;
+      min-height: calc(100vh - 74px);
+    }
   }
 }
 </style>

@@ -1,18 +1,37 @@
 <script setup>
+import { useAdminStore } from '@/stores/admin'
+import { logoutAPI } from '@/apis/admin'
+import { useRouter, useRoute } from 'vue-router'
+import { ElMessageBox } from 'element-plus'
+const router = useRouter()
+const route = useRoute()
+const adminStore = useAdminStore()
 const handleCommand = (command) => {
- 
   if (command === 'logout') {
     // 退出登录逻辑
-     console.log(command)
+    ElMessageBox.confirm('确定退出登录吗？', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }).then(() => {
+      logoutAPI().then(() => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('userInfo')
+        router.push( '/auth/login')
+      })
+    })
   }
+}
+const handleCollapse = () => {
+  adminStore.toggleCollapse()
 }
 </script>
 <template>
   <div class="navbar">
     <div class="flex-box">
-      <el-button>
+      <el-button @click="handleCollapse">
         <el-icon><Expand /></el-icon></el-button>
-        <p class="page-title">导航栏</p>
+        <p class="page-title">{{route.meta.title}}</p>
     </div>
     <div class="flex-box">
       <el-dropdown  @command="handleCommand">
@@ -34,7 +53,7 @@ const handleCommand = (command) => {
  </template>
  <style lang="scss" scoped>
  .navbar{
-  height: 64px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
