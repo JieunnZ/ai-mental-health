@@ -95,35 +95,44 @@ const router = createRouter({
   routes: [...backendRoutes, ...frontendRoutes],
 })
 // 导航前置守卫，检查登录状态
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   const token = localStorage.getItem('token')
   if (token) {
     // 已登录，根据用户类型判断是否需要重定向
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-    if (userInfo.userType == 2) {
-      // 管理员
-      if (to.path == '/back/dashboard') {
-        // 管理员，继续导航
-        next()
+    try {
+      const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+      if (userInfo && userInfo.userType == 2) {
+        // 管理员，可以访问所有后台页面
+        if (to.path.startsWith('/back')) {
+          return true
+        } else if (to.path.startsWith('/auth')) {
+          // 管理员访问登录页，重定向到后台
+          return '/back/dashboard'
+        } else {
+          return true
+        }
+      } else if (userInfo && userInfo.userType == 1) {
+        // 普通用户，只能访问前台页面
+        if (to.path.startsWith('/back') || to.path.startsWith('/auth')) {
+          return '/'
+        } else {
+          return true
+        }
       } else {
-        next('/back/dashboard')
+        // userType异常，重定向到登录页
+        return '/auth/login'
       }
-    } else if (userInfo.userType == 1) {
-      // 用户账户只能访问前台页面
-      if (to.path.startsWith('/back') || to.path.startsWith('/auth')) {
-        next('/')
-      } else {
-        next()
-      }
+    } catch (e) {
+      // userInfo解析失败，重定向到登录页
+      return '/auth/login'
     }
   } else {
     // 未登录，根据路径判断是否需要重定向
-    // 非登录页，重定向到登录页
     if (to.path.startsWith('/back')) {
-      next('/auth/login')
+      return '/auth/login'
     } else {
-      // 登录页，继续导航
-      next()
+      // 前台页面，继续导航
+      return true
     }
   }
 })
