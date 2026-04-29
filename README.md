@@ -28,6 +28,8 @@
 - 注册、登录、登出完整流程
 - 路由权限控制
 
+<<<<<<< HEAD
+
 ## 页面预览
 
 ### 1. AI咨询页面
@@ -162,12 +164,6 @@ VITE_API_BASE_URL=http://localhost:8000/api
 3. 提交更改
 4. 推送到分支
 5. 创建 Pull Request
-
-## 许可证
-
-MIT License
-
-<br />
 
 ***
 
