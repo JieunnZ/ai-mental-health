@@ -93,6 +93,38 @@ pnpm build
 └── vite.config.js       # Vite配置
 ```
 
+## 页面预览
+
+### 首页
+<img width="1279" height="625" alt="屏幕截图 2026-05-08 194017" src="https://github.com/user-attachments/assets/ba31a5aa-8685-4d93-a4f1-cff88bb94805" />
+
+### 注册页
+<img width="1279" height="616" alt="屏幕截图 2026-05-08 194046" src="https://github.com/user-attachments/assets/1064d9cf-1331-4355-8fe3-e897a315a4a5" />
+
+### 登录页
+<img width="1279" height="626" alt="屏幕截图 2026-05-08 194113" src="https://github.com/user-attachments/assets/d92622f1-c950-4254-9dd6-88f5145f834b" />
+
+### 用户端——AI咨询页面
+<img width="1279" height="623" alt="屏幕截图 2026-05-08 194214" src="https://github.com/user-attachments/assets/f3ba5c61-747c-407f-a056-3c5477cc06d1" />
+
+### 用户端——情绪日记
+<img width="1279" height="622" alt="屏幕截图 2026-05-08 194237" src="https://github.com/user-attachments/assets/2ed128f2-04a6-4bdd-8c93-73e2a04e1de1" />
+
+### 用户端——知识库
+<img width="1279" height="611" alt="屏幕截图 2026-05-08 194306" src="https://github.com/user-attachments/assets/9fb30cf4-2982-4b75-9780-c742860b9490" />
+
+### 管理端——数据分析
+<img width="1279" height="620" alt="屏幕截图 2026-05-08 194435" src="https://github.com/user-attachments/assets/5d347226-1f66-42ba-af47-ecad49a938f2" />
+
+### 管理端——知识文章
+<img width="1279" height="619" alt="屏幕截图 2026-05-08 194504" src="https://github.com/user-attachments/assets/aa0b3611-b747-4166-a3f7-a99e708ce2b3" />
+
+### 管理端——咨询记录
+<img width="1279" height="619" alt="屏幕截图 2026-05-08 194528" src="https://github.com/user-attachments/assets/85a4f5b6-02b2-48d5-875d-663ca3a30e6a" />
+
+### 管理端——情绪日志
+<img width="1279" height="614" alt="屏幕截图 2026-05-08 194550" src="https://github.com/user-attachments/assets/0c2bd668-e369-415e-96dc-6f84c11ee488" />
+
 ## 开发指南
 
 ### 代码规范
